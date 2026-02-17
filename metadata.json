@@ -1,0 +1,5 @@
+{
+  "name": "Nexus ERP SaaS Architect",
+  "description": "A high-fidelity dashboard and architectural orchestrator for managing multi-tenant ERPNext SaaS environments, featuring control plane management, marketplace, and infrastructure specs.",
+  "requestFramePermissions": []
+}
