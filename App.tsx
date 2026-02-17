@@ -5,6 +5,9 @@ import { Dashboard } from './components/Dashboard';
 import { ArchitectureDoc } from './components/ArchitectureDoc';
 import { TenantManager } from './components/TenantManager';
 import { Marketplace } from './components/Marketplace';
+import { ProductSpec } from './components/ProductSpec';
+import { PortalExperience } from './components/PortalExperience';
+import { InfrastructureMetrics } from './components/InfrastructureMetrics';
 import { AppView } from './types';
 
 const App: React.FC = () => {
@@ -15,11 +18,17 @@ const App: React.FC = () => {
       case AppView.DASHBOARD:
         return <Dashboard />;
       case AppView.ARCHITECTURE:
-        return <ArchitectureDoc />;
+        return <ArchitectureDoc defaultTab="stack" />;
+      case AppView.INFRASTRUCTURE:
+        return <InfrastructureMetrics />;
+      case AppView.PORTALS:
+        return <PortalExperience />;
       case AppView.TENANTS:
         return <TenantManager />;
       case AppView.MARKETPLACE:
         return <Marketplace />;
+      case AppView.PRODUCT_SPEC:
+        return <ProductSpec />;
       default:
         return <Dashboard />;
     }
@@ -38,7 +47,7 @@ const App: React.FC = () => {
           </div>
           <div className="flex items-center gap-4">
             <button className="bg-white border border-slate-200 px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors">
-              Docs
+              Documentation
             </button>
             <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-sm hover:bg-indigo-700 transition-colors">
               Deploy New Instance

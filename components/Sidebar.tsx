@@ -7,7 +7,8 @@ import {
   ShoppingBag, 
   ShieldCheck, 
   Server,
-  ChevronRight
+  ChevronRight,
+  Target
 } from 'lucide-react';
 import { AppView } from '../types';
 
@@ -19,6 +20,7 @@ interface SidebarProps {
 export const Sidebar: React.FC<SidebarProps> = ({ currentView, onNavigate }) => {
   const navItems = [
     { id: AppView.DASHBOARD, label: 'Control Plane', icon: LayoutDashboard },
+    { id: AppView.PRODUCT_SPEC, label: 'Product Vision', icon: Target },
     { id: AppView.ARCHITECTURE, label: 'System Design', icon: Layers },
     { id: AppView.TENANTS, label: 'Tenants & Isolation', icon: Users },
     { id: AppView.MARKETPLACE, label: 'App Marketplace', icon: ShoppingBag },

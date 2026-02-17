@@ -5,7 +5,28 @@ export enum AppView {
   TENANTS = 'tenants',
   MARKETPLACE = 'marketplace',
   PORTALS = 'portals',
-  INFRASTRUCTURE = 'infrastructure'
+  INFRASTRUCTURE = 'infrastructure',
+  PRODUCT_SPEC = 'product-spec'
+}
+
+export interface TenantLog {
+  timestamp: string;
+  level: 'INFO' | 'WARN' | 'ERROR' | 'SUCCESS';
+  message: string;
+}
+
+export interface TenantRole {
+  id: string;
+  name: string;
+  description: string;
+  modules: string[]; // List of module IDs this role can access
+}
+
+export interface TenantUser {
+  id: string;
+  name: string;
+  email: string;
+  roleId: string;
 }
 
 export interface Tenant {
@@ -17,16 +38,29 @@ export interface Tenant {
   region: string;
   modules: string[];
   createdAt: string;
+  provisioningProgress?: number;
+  currentStep?: string;
+  logs?: TenantLog[];
+  roles?: TenantRole[];
+  users?: TenantUser[];
+}
+
+export interface ChangelogEntry {
+  version: string;
+  date: string;
+  changes: string[];
 }
 
 export interface MarketplaceModule {
   id: string;
   name: string;
-  category: 'vertical' | 'utility' | 'integration';
+  categories: string[];
   description: string;
   price: number;
   rating: number;
   icon: string;
+  version: string;
+  changelog: ChangelogEntry[];
 }
 
 export interface SystemHealth {
